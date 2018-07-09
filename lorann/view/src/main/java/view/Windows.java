@@ -19,7 +19,7 @@ public class Windows extends JFrame implements KeyListener, IView {
 	private IController controller;
 
 	private final Menuu menuu = new Menuu();
-	private final Grid grid = new Grid();
+	private final GridInfo grid = new GridInfo();
 	private final Information info = new Information();
 
 	public Windows() {
@@ -30,7 +30,7 @@ public class Windows extends JFrame implements KeyListener, IView {
 		this.setResizable(false);
 		this.setAlwaysOnTop(true);
 		this.getContentPane().setBackground(Color.BLACK);
-		this.setContentPane(this.menuu);
+		this.getContentPane().add(this.menuu);
 		this.setVisible(true);
 		this.addKeyListener(this);
 
@@ -48,12 +48,16 @@ public class Windows extends JFrame implements KeyListener, IView {
 
 		case KeyEvent.VK_ENTER:
 			this.controller.orderPerform(e.getKeyCode());
-			this.repaint();
 
-			this.getContentPane().setLayout(new BorderLayout());
-			this.getContentPane().add("West", this.grid);
-			this.getContentPane().add("East", this.info);
+			this.revalidate();
+			this.repaint();
+			this.setLayout(new BorderLayout());
+
+			this.setContentPane(this.grid);
+			this.getContentPane().add(this.info, BorderLayout.WEST);
+			// this.revalidate();
 			this.setVisible(true);
+
 			break;
 
 		case KeyEvent.VK_Z:

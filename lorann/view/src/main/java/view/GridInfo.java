@@ -5,7 +5,7 @@ import java.awt.Graphics;
 
 import javax.swing.JPanel;
 
-public class Grid extends JPanel {
+public class GridInfo extends JPanel {
 
 	/**
 	 *
@@ -15,7 +15,7 @@ public class Grid extends JPanel {
 	/**
 	 * Constructor
 	 */
-	public Grid() {
+	public GridInfo() {
 
 	}
 
@@ -31,6 +31,8 @@ public class Grid extends JPanel {
 		g.fillRect(0, 0, 600, 400); // BACKGROUND BLACK
 		g.setColor(Color.GRAY);
 		g.setColor(Color.WHITE);
+
+		g.drawLine(600, 0, 600, 400);
 		final int uniteX = 600 / 30;
 		final int uniteY = 400 / 20;
 
