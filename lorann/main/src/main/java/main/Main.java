@@ -1,3 +1,8 @@
+/**
+ *
+ * @author Oceane oceane.duquenne@viacesi.fr
+ * @version 1.0
+ */
 package main;
 
 import java.sql.SQLException;
@@ -7,27 +12,26 @@ import model.ModelFacade;
 import view.ViewFacade;
 
 /**
- * <h1>The Class Main.</h1>
- *
- * @author Jean-Aymeric DIET jadiet@cesi.fr
- * @version 1.0
+ * The Class Main.
  */
 public abstract class Main {
 
-    /**
-     * The main method.
-     *
-     * @param args
-     *            the arguments
-     */
-    public static void main(final String[] args) {
-        final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
+	/**
+	 * The main method.
+	 *
+	 * @param args
+	 *            the arguments
+	 */
+	public static void main(final String[] args) {
+		final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
 
-        try {
-            controller.start();
-        } catch (final SQLException exception) {
-            exception.printStackTrace();
-        }
-    }
+		try {
+			controller.start();
+		} catch (final SQLException exception) {
+			exception.printStackTrace();
+		}
+
+		// new Windows();
+	}
 
 }
