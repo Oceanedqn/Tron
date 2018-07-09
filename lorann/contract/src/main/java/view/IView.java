@@ -1,4 +1,6 @@
-package contract;
+package view;
+
+import controller.IController;
 
 /**
  * <h1>The Interface IView.</h1>

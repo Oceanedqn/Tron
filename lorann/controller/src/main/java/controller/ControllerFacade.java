@@ -4,10 +4,9 @@ import java.awt.event.KeyEvent;
 import java.sql.SQLException;
 import java.util.List;
 
-import contract.IController;
-import contract.IView;
 import model.Example;
 import model.IModel;
+import view.IView;
 
 /**
  * <h1>The Class ControllerFacade provides a facade of the Controller
@@ -63,7 +62,9 @@ public class ControllerFacade implements IController {
 	public void orderPerform(final int keycode) {
 		if (keycode == KeyEvent.VK_ENTER) {
 			System.out.println("caca");
-			// new Game();
+
+			// change pour afficher la map
+
 		}
 
 	}

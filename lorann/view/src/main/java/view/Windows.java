@@ -1,14 +1,13 @@
 package view;
 
+import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
-import javax.swing.JButton;
 import javax.swing.JFrame;
 
-import contract.IController;
-import contract.IView;
+import controller.IController;
 
 public class Windows extends JFrame implements KeyListener, IView {
 
@@ -19,25 +18,22 @@ public class Windows extends JFrame implements KeyListener, IView {
 
 	private IController controller;
 
-	JButton bouton = new JButton("Start");
 	private final Menuu menuu = new Menuu();
+	private final Grid grid = new Grid();
+	private final Information info = new Information();
 
 	public Windows() {
 		this.setTitle("Tron");
-		this.setSize(900, 400);
+		this.setSize(900, 430);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
 		this.setAlwaysOnTop(true);
 		this.getContentPane().setBackground(Color.BLACK);
-		// menuu.setLayout(new BorderLayout());
-		// menuu.add(bouton, BorderLayout.SOUTH);
-		// bouton.addActionListener(this);
 		this.setContentPane(this.menuu);
-		// this.requestFocusInWindow();
 		this.setVisible(true);
-		// On récupère ce que fais le clavier
 		this.addKeyListener(this);
+
 	}
 
 	@Override
@@ -47,7 +43,63 @@ public class Windows extends JFrame implements KeyListener, IView {
 
 	@Override
 	public void keyPressed(final KeyEvent e) {
-		this.controller.orderPerform(e.getKeyCode());
+
+		switch (e.getKeyCode()) {
+
+		case KeyEvent.VK_ENTER:
+			this.controller.orderPerform(e.getKeyCode());
+			this.repaint();
+
+			this.getContentPane().setLayout(new BorderLayout());
+			this.getContentPane().add("West", this.grid);
+			this.getContentPane().add("East", this.info);
+			this.setVisible(true);
+			break;
+
+		case KeyEvent.VK_Z:
+
+			this.controller.orderPerform(e.getKeyCode());
+			System.out.println("Haut");
+			break;
+
+		case KeyEvent.VK_Q:
+			System.out.println("Gauche");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		case KeyEvent.VK_S:
+			System.out.println("Bas");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		case KeyEvent.VK_D:
+			System.out.println("Droite");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		case KeyEvent.VK_UP:
+			System.out.println("Haut");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		case KeyEvent.VK_LEFT:
+			System.out.println("Gauche");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		case KeyEvent.VK_DOWN:
+			System.out.println("Bas");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		case KeyEvent.VK_RIGHT:
+			System.out.println("Droite");
+			this.controller.orderPerform(e.getKeyCode());
+			break;
+
+		// CHOIX DE PLUS QUE DEUX JOUEURS
+		}
+
 	}
 
 	@Override

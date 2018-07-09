@@ -16,20 +16,27 @@ public class Grid extends JPanel {
 	 * Constructor
 	 */
 	public Grid() {
+
 	}
 
 	/**
 	 * Draw the grid
-	 * 
+	 *
 	 * @param g
 	 */
-	public void paintComponenent(final Graphics g) {
 
+	@Override
+	public void paintComponent(final Graphics g) {
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 600, 400);
+		g.fillRect(0, 0, 600, 400); // BACKGROUND BLACK
+		g.setColor(Color.GRAY);
+		g.setColor(Color.WHITE);
+		final int uniteX = 600 / 30;
+		final int uniteY = 400 / 20;
 
-		g.setColor(Color.MAGENTA);
-		// Grille
+		for (int i = 0; i < 30; i++) {
+			g.drawLine(uniteX * i, 0, uniteX * i, 400);
+			g.drawLine(0, uniteY * i, 600, uniteY * i);
+		}
 	}
-
 }

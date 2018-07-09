@@ -2,8 +2,7 @@ package view;
 
 import javax.swing.JOptionPane;
 
-import contract.IController;
-import contract.IView;
+import controller.IController;
 
 /**
  * <h1>The Class ViewFacade provides a facade of the View component.</h1>
