@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
@@ -19,8 +18,7 @@ public class Windows extends JFrame implements KeyListener, IView {
 	private IController controller;
 
 	private final Menuu menuu = new Menuu();
-	private final GridInfo grid = new GridInfo();
-	private final Information info = new Information();
+	private final Game grid = new Game();
 
 	public Windows() {
 		this.setTitle("Tron");
@@ -48,14 +46,7 @@ public class Windows extends JFrame implements KeyListener, IView {
 
 		case KeyEvent.VK_ENTER:
 			this.controller.orderPerform(e.getKeyCode());
-
-			this.revalidate();
-			this.repaint();
-			this.setLayout(new BorderLayout());
-
 			this.setContentPane(this.grid);
-			this.getContentPane().add(this.info, BorderLayout.WEST);
-			// this.revalidate();
 			this.setVisible(true);
 
 			break;
