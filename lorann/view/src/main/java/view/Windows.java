@@ -7,19 +7,24 @@ import java.awt.event.KeyListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
-public class Windows extends JFrame implements KeyListener {
+import contract.IController;
+import contract.IView;
+
+public class Windows extends JFrame implements KeyListener, IView {
 
 	/**
-	* 
+	*
 	*/
 	private static final long serialVersionUID = 1L;
+
+	private IController controller;
 
 	JButton bouton = new JButton("Start");
 	private final Menuu menuu = new Menuu();
 
 	public Windows() {
 		this.setTitle("Tron");
-		this.setSize(600, 400);
+		this.setSize(900, 400);
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setLocationRelativeTo(null);
 		this.setResizable(false);
@@ -29,13 +34,10 @@ public class Windows extends JFrame implements KeyListener {
 		// menuu.add(bouton, BorderLayout.SOUTH);
 		// bouton.addActionListener(this);
 		this.setContentPane(this.menuu);
+		// this.requestFocusInWindow();
 		this.setVisible(true);
 		// On récupère ce que fais le clavier
 		this.addKeyListener(this);
-	}
-
-	public void closeWindow() {
-		this.setVisible(false);
 	}
 
 	@Override
@@ -45,16 +47,26 @@ public class Windows extends JFrame implements KeyListener {
 
 	@Override
 	public void keyPressed(final KeyEvent e) {
-
-		if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-			this.closeWindow();
-			System.out.println("caca");
-			new Game();
-		}
+		this.controller.orderPerform(e.getKeyCode());
 	}
 
 	@Override
 	public void keyReleased(final KeyEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	public IController getController() {
+		return this.controller;
+	}
+
+	@Override
+	public void setController(final IController controller) {
+		this.controller = controller;
+	}
+
+	@Override
+	public void displayMessage(final String message) {
 		// TODO Auto-generated method stub
 
 	}

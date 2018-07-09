@@ -5,7 +5,7 @@ import java.awt.Dimension;
 
 import javax.swing.JPanel;
 
-public class Cube extends JPanel {
+public class Block extends JPanel {
 
 	/**
 	 *
@@ -14,10 +14,10 @@ public class Cube extends JPanel {
 
 	/**
 	 * Constructor
-	 * 
+	 *
 	 * @param color
 	 */
-	public Cube(final Color color) {
+	public Block(final Color color) {
 		this.setBackground(color);
 		this.setSize(new Dimension(20, 20));
 	}

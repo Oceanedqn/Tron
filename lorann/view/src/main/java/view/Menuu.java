@@ -31,21 +31,22 @@ public class Menuu extends JPanel {
 		 * Draw background black
 		 */
 		g.setColor(Color.BLACK);
-		g.fillRect(0, 0, 600, 400);
+		g.fillRect(0, 0, 900, 400);
 		/**
 		 * Write a text gray
 		 */
 		g.setColor(Color.GRAY);
 		final Font fonte = new Font("Zapfino", Font.BOLD, 15);
 		g.setFont(fonte);
-		g.drawString("Press ENTER for start the game", 175, 250);
+		g.drawString("Press ENTER three times for start the game", 290, 250);
 
 		/**
 		 * Insert a picture for the background
 		 */
 		try {
-			final Image img = ImageIO.read(new File("src/pictures/TronBleu.png"));
-			g.drawImage(img, 165, 50, this);
+			final Image img = ImageIO
+					.read(new File("D:\\Document\\Java\\Utiliser\\tron\\Tron\\lorann\\pictures\\TronRose.png"));
+			g.drawImage(img, 320, 50, this);
 			System.out.println("On met l'image en bleu");
 		} catch (final IOException e) {
 			e.printStackTrace();
@@ -54,8 +55,9 @@ public class Menuu extends JPanel {
 		// FAIRE UN TRUC POUR LE FAIRE CHANGER DE COULEUR
 
 		try {
-			final Image img = ImageIO.read(new File("src/pictures/TronRose.png"));
-			g.drawImage(img, 165, 50, this);
+			final Image img = ImageIO
+					.read(new File("D:\\Document\\Java\\Utiliser\\tron\\Tron\\lorann\\pictures\\TronBleu.png"));
+			g.drawImage(img, 320, 50, this);
 			System.out.println("On met l'image en rouge");
 		} catch (final IOException e) {
 			e.printStackTrace();
