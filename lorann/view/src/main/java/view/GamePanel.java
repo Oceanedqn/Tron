@@ -2,21 +2,26 @@ package view;
 
 import java.awt.Color;
 import java.awt.Graphics;
+import java.util.Observable;
 
 import javax.swing.JPanel;
 
-public class Game extends JPanel {
+import model.IModel;
+
+class GamePanel extends JPanel implements Observer {
 
 	/**
 	 *
 	 */
 	private static final long serialVersionUID = -6371690572651419043L;
 
+	private IModel model;
+
 	/**
 	 * Constructor
 	 */
-	public Game() {
-
+	public GamePanel() {
+		this.setVisible(true);
 	}
 
 	/**
@@ -51,8 +56,33 @@ public class Game extends JPanel {
 		g.setColor(Color.GRAY);
 		g.fillRect(601, 0, 300, 400); // BACKGROUND GRAY
 		g.setColor(Color.WHITE);
-		g.drawString("Party information ", 620, 50);
+		g.drawString("PARTY INFORMATION ", 620, 50);
 		g.drawString("Timer : ", 625, 70);
 
+		g.drawString("ORDER PLAYER 1", 620, 100);
+		g.drawString("UP 	: Z", 625, 120);
+		g.drawString("LEFT 	: Q", 625, 140);
+		g.drawString("DOWN 	: S", 625, 160);
+		g.drawString("RIGHT : D", 625, 180);
+
+		g.drawString("ORDER PLAYER 2", 620, 220);
+		g.drawString("UP 	: UP", 625, 240);
+		g.drawString("LEFT 	: LEFT", 625, 260);
+		g.drawString("DOWN 	: DOWN", 625, 280);
+		g.drawString("RIGHT : RIGHT", 625, 300);
+
 	}
+
+	public void update(final Observable observable, final Object o) {
+		this.model = (IModel) observable;
+		this.repaint();
+
+	}
+
+	@Override
+	public void update() {
+		// TODO Auto-generated method stub
+
+	}
+
 }

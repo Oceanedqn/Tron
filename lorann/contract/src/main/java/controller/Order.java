@@ -1,4 +1,4 @@
-package view;
+package controller;
 
 /**
  *
@@ -7,5 +7,5 @@ package view;
  */
 public enum Order {
 
-	UP, LEFT, DOWN, RIGHT,
+	UP, LEFT, DOWN, RIGHT, ENTER,
 }

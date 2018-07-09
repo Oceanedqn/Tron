@@ -1,5 +1,7 @@
 package view;
 
+import java.util.Observer;
+
 import javax.swing.JOptionPane;
 
 import controller.IController;
@@ -14,12 +16,15 @@ public class ViewFacade implements IView {
 
 	private final Windows win;
 
+	// private IModel model;
+
 	/**
 	 * Instantiates a new view facade.
 	 */
 	public ViewFacade() {
 		super();
 		this.win = new Windows();
+
 	}
 
 	/*
@@ -36,9 +41,57 @@ public class ViewFacade implements IView {
 		return this.win;
 	}
 
+	/**
+	 * update methode from IView inteface
+	 */
+	@Override
+	public void repaint() {
+
+	}
+
+	/**
+	 * methode to open the frame
+	 */
+	public void openFrame() {
+		this.win.setVisible(true);
+	}
+
+	/**
+	 * methode to close the current frame
+	 */
+	public void closeFrame() {
+		this.win.setVisible(false);
+	}
+
+	/**
+	 * methode to get the observer from the patern
+	 */
+	@Override
+	public Observer getObserver() {
+		return (Observer) this.win.getGamePanel();
+	}
+
+	/**
+	 * set the controller associated to the view
+	 *
+	 * @param controller
+	 *            The controller associated
+	 */
 	@Override
 	public void setController(final IController controller) {
 		this.win.setController(controller);
+	}
+
+	@Override
+	public void openWindows() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void closeWindows() {
+		// TODO Auto-generated method stub
+
 	}
 
 }

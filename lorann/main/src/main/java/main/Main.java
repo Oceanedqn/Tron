@@ -21,15 +21,17 @@ public abstract class Main {
 	 *
 	 * @param args
 	 *            the arguments
+	 * @throws SQLException
 	 */
-	public static void main(final String[] args) {
-		final ControllerFacade controller = new ControllerFacade(new ViewFacade(), new ModelFacade());
+	public static void main(final String[] args) throws SQLException {
 
-		try {
-			controller.start();
-		} catch (final SQLException exception) {
-			exception.printStackTrace();
-		}
+		final ModelFacade model = new ModelFacade();
+		final ViewFacade view = new ViewFacade();
+		final ControllerFacade controller = new ControllerFacade(view, model);
+		view.setController(controller);
+		controller.start();
+		// final ControllerFacade controller = new ControllerFacade(new ViewFacade(),
+		// new ModelFacade());
 
 		// new Windows();
 	}

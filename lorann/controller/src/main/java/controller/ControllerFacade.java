@@ -2,9 +2,7 @@ package controller;
 
 import java.awt.event.KeyEvent;
 import java.sql.SQLException;
-import java.util.List;
 
-import model.Example;
 import model.IModel;
 import view.IView;
 
@@ -18,10 +16,12 @@ import view.IView;
 public class ControllerFacade implements IController {
 
 	/** The view. */
-	private final IView view;
+	private IView view;
 
-	/** The model. */
-	private final IModel model;
+	// private IModel model;
+
+	/** The Clock of the game */
+	private Clock clock;
 
 	/**
 	 * Instantiates a new controller facade.
@@ -32,9 +32,8 @@ public class ControllerFacade implements IController {
 	 *            the model
 	 */
 	public ControllerFacade(final IView view, final IModel model) {
-		super();
+
 		this.view = view;
-		this.model = model;
 		this.view.setController(this);
 	}
 
@@ -44,22 +43,27 @@ public class ControllerFacade implements IController {
 	 * @throws SQLException
 	 *             the SQL exception
 	 */
+	@Override
 	public void start() throws SQLException {
-		this.getView().displayMessage(this.getModel().getExampleById(1).toString());
+		// this.model.getObservable().addObserver(this.view.getObserver());
+		this.clock = new Clock(this);
+		this.clock.start();
+		// this.getView().displayMessage(this.getModel().getExampleById(1).toString());
 
-		this.getView().displayMessage(this.getModel().getExampleByName("Example 2").toString());
+		// this.getView().displayMessage(this.getModel().getExampleByName("Example
+		// 2").toString());
 
-		final List<Example> examples = this.getModel().getAllExamples();
-		final StringBuilder message = new StringBuilder();
-		for (final Example example : examples) {
-			message.append(example);
-			message.append('\n');
-		}
-		this.getView().displayMessage(message.toString());
+		// final List<Example> examples = this.getModel().getAllExamples();
+		// final StringBuilder message = new StringBuilder();
+		// for (final Example example : examples) {
+		// message.append(example);
+		// message.append('\n');
+		// }
+		// this.getView().displayMessage(message.toString());
 	}
 
-	@Override
 	public void orderPerform(final int keycode) {
+
 		if (keycode == KeyEvent.VK_ENTER) {
 			System.out.println("caca");
 
@@ -69,21 +73,41 @@ public class ControllerFacade implements IController {
 
 	}
 
+	public int collision(final int positionX, final int positionY) {
+		return positionX;
+
+	}
+
+	// GETTERS & SETTERS //
+
 	/**
-	 * Gets the view.
+	 * Sets the view.
 	 *
-	 * @return the view
+	 * @param view
+	 *            the new view
 	 */
-	public IView getView() {
-		return this.view;
+	public void setView(final IView view) {
+		this.view = view;
 	}
 
 	/**
-	 * Gets the model.
+	 * Sets the model.
 	 *
-	 * @return the model
+	 * @param model
+	 *            the new model
 	 */
-	public IModel getModel() {
-		return this.model;
+	@Override
+	public void setModel(final IModel model) {
+	}
+
+	public void update() {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void orderPerform(final Order keyCode) {
+		// TODO Auto-generated method stub
+
 	}
 }
